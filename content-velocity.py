@@ -29,9 +29,9 @@ if st.button("🔍 Compare Content"):
 st.write("---")
 st.markdown("💡 Developed by **Amal Alexander** | Powered by **Streamlit & Scikit-Learn**")
 
-# Instructions Section
+# Instructions Section (Updated)
 st.write("### 📌 How to Use This Tool")
-st.write("""
+st.markdown("""
 1. **Enter Your Content** in the first text box.
 2. **Enter Competitor's Content** in the second text box.
 3. Click the **"Compare Content"** button to calculate similarity.
