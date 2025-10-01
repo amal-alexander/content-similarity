@@ -1,7 +1,19 @@
 import streamlit as st
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import streamlit.components.v1 as components
 
+st.set_page_config(page_title="My Streamlit App")
+
+# Inject Google Site Verification meta tag
+components.html(
+    """
+    <head>
+        <meta name="google-site-verification" content="sYtITGr8JrdGjQFqJPfZ1Gr6sPyToMkfpREs60L_ZSs" />
+    </head>
+    """,
+    height=0,  # Invisible
+)
 # App Title
 st.title("📊 Content Similarity Checker (Cosine Similarity)")
 st.write("Compare your content with a competitor's content to check similarity.")
@@ -37,3 +49,4 @@ st.markdown("""
 3. Click the **"Compare Content"** button to calculate similarity.
 4. The tool will display a **Cosine Similarity Score (%)**.
 """)
+
