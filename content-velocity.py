@@ -1,19 +1,18 @@
 import streamlit as st
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-import streamlit.components.v1 as components
 
+# ✅ Page Config
 st.set_page_config(page_title="My Streamlit App")
 
-# Inject Google Site Verification meta tag
-components.html(
+# ✅ Inject Google Site Verification meta tag (works better than iframe)
+st.markdown(
     """
-    <head>
-        <meta name="google-site-verification" content="sYtITGr8JrdGjQFqJPfZ1Gr6sPyToMkfpREs60L_ZSs" />
-    </head>
+    <meta name="google-site-verification" content="sYtITGr8JrdGjQFqJPfZ1Gr6sPyToMkfpREs60L_ZSs" />
     """,
-    height=0,  # Invisible
+    unsafe_allow_html=True
 )
+
 # App Title
 st.title("📊 Content Similarity Checker (Cosine Similarity)")
 st.write("Compare your content with a competitor's content to check similarity.")
@@ -21,6 +20,16 @@ st.write("Compare your content with a competitor's content to check similarity."
 # Input text areas
 content1 = st.text_area("📝 Enter Your Content (Max 5000 words)", "", height=250, max_chars=25000)
 content2 = st.text_area("📝 Enter Competitor's Content (Max 5000 words)", "", height=250, max_chars=25000)
+
+# Process similarity
+if st.button("🔎 Check Similarity"):
+    if content1.strip() and content2.strip():
+        vectorizer = TfidfVectorizer()
+        tfidf_matrix = vectorizer.fit_transform([content1, content2])
+        similarity = cosine_similarity(tfidf_matrix[0:1], tfidf_matrix)[0][1]
+        st.success(f"✅ Cosine Similarity: **{similarity:.4f}**")
+    else:
+        st.warning("⚠️ Please enter content in both text areas.")
 
 # Compare button
 if st.button("🔍 Compare Content"):
