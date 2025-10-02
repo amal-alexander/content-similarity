@@ -12,7 +12,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
+<meta name="google-site-verification" content="sYtITGr8JrdGjQFqJPfZ1Gr6sPyToMkfpREs60L_ZSs" />
 # App Title
 st.title("📊 Content Similarity Checker (Cosine Similarity)")
 st.write("Compare your content with a competitor's content to check similarity.")
