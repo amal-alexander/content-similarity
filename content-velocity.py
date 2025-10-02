@@ -2,18 +2,25 @@ import streamlit as st
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-# ✅ Page Config
+# ✅ Page config comes first
 st.set_page_config(page_title="My Streamlit App")
 
-# ✅ Inject Google Site Verification meta tag (works better than iframe)
+# ✅ Inject Google Search Console verification meta into <head>
 st.markdown(
     """
-    <meta name="google-site-verification" content="sYtITGr8JrdGjQFqJPfZ1Gr6sPyToMkfpREs60L_ZSs" />
+    <script>
+    (function() {
+      var meta = document.createElement('meta');
+      meta.name = "google-site-verification";
+      meta.content = "sYtITGr8JrdGjQFqJPfZ1Gr6sPyToMkfpREs60L_ZSs";
+      document.getElementsByTagName('head')[0].appendChild(meta);
+    })();
+    </script>
     """,
     unsafe_allow_html=True
 )
-<meta name="google-site-verification" content="sYtITGr8JrdGjQFqJPfZ1Gr6sPyToMkfpREs60L_ZSs" />
-# App Title
+
+#  App Title
 st.title("📊 Content Similarity Checker (Cosine Similarity)")
 st.write("Compare your content with a competitor's content to check similarity.")
 
